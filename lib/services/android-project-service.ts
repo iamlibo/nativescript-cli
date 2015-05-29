@@ -10,7 +10,7 @@ import fs = require("fs");
 import os = require("os");
 
 class AndroidProjectService implements IPlatformProjectService {
-	private SUPPORTED_TARGETS = ["android-17", "android-18", "android-19", "android-21"];
+	private SUPPORTED_TARGETS = ["android-17", "android-18", "android-19", "android-21", "android-MNC"];
 	private static METADATA_DIRNAME = "__metadata";
 	private static RES_DIRNAME = "res";
 	private static VALUES_DIRNAME = "values";
@@ -393,7 +393,7 @@ class AndroidProjectService implements IPlatformProjectService {
 			try {
 				this.$childProcess.exec("ant -version").wait();
 			} catch(error) {
-				this.$errors.fail("Error executing commands 'ant', make sure you have ant installed and added to your PATH.")
+				this.$errors.fail("Error executing commands 'ant', make sure you have ant installed and added to your PATH.");
 			}
 		}).future<void>()();
 	}
